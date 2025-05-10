@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+:root {
+    font-family: Inter, sans-serif;
+    font-feature-settings: "liga" 1, "calt" 1;
+    /* fix for Chrome */
+}
+
+@supports (font-variation-settings: normal) {
+    :root {
+        font-family: InterVariable, sans-serif;
+    }
+}
+
+@theme {
+    --font-sans: Inter;
+}
+
+@layer base {
+    h1 {
+        font-size: var(--text-2xl);
+        /* font-weight: var(--font-weight-bold); */
+    }
+
+    h2 {
+        font-size: var(--text-xl);
+    }
+
+    ul {
+        padding-left: 1.5rem;
+    }
+
+    ul li::before {
+        content: "- ";
+        color: inherit;
+        /* Optional: match text color */
+    }
+}

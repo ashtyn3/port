@@ -25,7 +25,7 @@
 <h1 class="p-5">Writing</h1>
 <div class="flex flex-col w-full justify-center items-center my-8">
     {#each data as p}
-        <a href={`/p/${p.slug}`} class="w-max">
+        <a href={`/port/p/${p.slug}`} class="w-max">
             <div class="bg-black h-fit p-9 mx-auto text-white">
                 <p>{p.title}</p>
                 <p>{new Date(p.date).toDateString()}</p>

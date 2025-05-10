@@ -27,7 +27,7 @@ for (const path in paths) {
     <p class="text-5xl tracking-widest">ASHTYN</p>
     <div class="flex flex-row gap-7">
         <a href="#projects" class="hover:underline">Projects</a>
-        <a href="/blog" class="hover:underline">Blog</a>
+        <a href="/blog" class="hover:underline">Writing</a>
     </div>
 </main>
 

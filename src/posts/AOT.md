@@ -4,8 +4,8 @@ type: me
 ---
 
 <div class="flex flex-row w-[50%]">
-    <img src="/sm-shot.png"/>
-    <img src="/full-screen.png"/>
+    <img src="/port/sm-shot.png"/>
+    <img src="/port/full-screen.png"/>
 </div>
 
 A pomodoro timing app for Mac OS.

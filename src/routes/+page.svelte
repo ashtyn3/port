@@ -1,24 +1,24 @@
 <script lang="ts">
-    type Post = {
-        title: string;
-        type: string;
-        slug: string;
-    };
+type Post = {
+	title: string;
+	type: string;
+	slug: string;
+};
 
-    const paths = import.meta.glob("/src/posts/*.md", { eager: true });
-    const data = { you: [], me: [] };
-    for (const path in paths) {
-        const file = paths[path];
-        const slug = path.split("/").at(-1)?.replace(".md", "");
+const paths = import.meta.glob("/src/posts/*.md", { eager: true });
+const data = { you: [], me: [] };
+for (const path in paths) {
+	const file = paths[path];
+	const slug = path.split("/").at(-1)?.replace(".md", "");
 
-        if (file && typeof file === "object" && "metadata" in file && slug) {
-            const metadata = file.metadata as Omit<Post, "slug">;
-            if (metadata.type != "blog") {
-                const post = { ...metadata, slug } satisfies Post;
-                data[post.type].push(post);
-            }
-        }
-    }
+	if (file && typeof file === "object" && "metadata" in file && slug) {
+		const metadata = file.metadata as Omit<Post, "slug">;
+		if (metadata.type != "blog") {
+			const post = { ...metadata, slug } satisfies Post;
+			data[post.type].push(post);
+		}
+	}
+}
 </script>
 
 <main
@@ -27,7 +27,7 @@
     <p class="text-5xl tracking-widest">ASHTYN</p>
     <div class="flex flex-row gap-7">
         <a href="#projects" class="hover:underline">Projects</a>
-        <a href="/port/blog" class="hover:underline">Blog</a>
+        <a href="/blog" class="hover:underline">Blog</a>
     </div>
 </main>
 
@@ -49,7 +49,7 @@
                             <div
                                 class="bg-black h-fit p-6 w-[100%] text-white mb-2"
                             >
-                                <a href={`/port/p/${p.slug}`}>{p.title}</a>
+                                <a href={`/p/${p.slug}`}>{p.title}</a>
                             </div>
                         {/each}
                     </div>
@@ -61,7 +61,7 @@
                             <div
                                 class="bg-black h-fit p-6 w-[100%] text-white mb-2"
                             >
-                                <a href={`/port/p/${p.slug}`}>{p.title}</a>
+                                <a href={`/p/${p.slug}`}>{p.title}</a>
                             </div>
                         {/each}
                     </div>

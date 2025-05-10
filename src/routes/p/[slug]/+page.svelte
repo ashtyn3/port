@@ -1,6 +1,6 @@
 <script lang="ts">
-    import "./styles.css";
-    let { data } = $props();
+import "./styles.css";
+let { data } = $props();
 </script>
 
 <article class="content mb-10">
@@ -8,7 +8,7 @@
         <div class="w-full flex justify-center">
             <div class="w-1/2 font-serif">
                 <div class="pb-3.5 font-mono">
-                    <a href="/port/blog">(Back)</a>
+                    <a href="/blog">(Back)</a>
                 </div>
                 <div class="tracking-wider w-full">
                     <p class="text-xs my-2 font-mono">
@@ -23,7 +23,7 @@
         <div class="w-full flex justify-center">
             <div class="w-1/2 font-mono">
                 <div class="pb-3.5">
-                    <a href="/port">(Back)</a>
+                    <a href="/">(Back)</a>
                 </div>
                 <div class="tracking-wider w-full">
                     <h1>{data.meta.title}</h1>

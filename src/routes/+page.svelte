@@ -1,24 +1,24 @@
 <script lang="ts">
-    type Post = {
-        title: string;
-        type: string;
-        slug: string;
-    };
+type Post = {
+	title: string;
+	type: string;
+	slug: string;
+};
 
-    const paths = import.meta.glob("/src/posts/*.md", { eager: true });
-    const data = { you: [], me: [] };
-    for (const path in paths) {
-        const file = paths[path];
-        const slug = path.split("/").at(-1)?.replace(".md", "");
+const paths = import.meta.glob("/src/posts/*.md", { eager: true });
+const data = { you: [], me: [] };
+for (const path in paths) {
+	const file = paths[path];
+	const slug = path.split("/").at(-1)?.replace(".md", "");
 
-        if (file && typeof file === "object" && "metadata" in file && slug) {
-            const metadata = file.metadata as Omit<Post, "slug">;
-            if (metadata.type != "blog") {
-                const post = { ...metadata, slug } satisfies Post;
-                data[post.type].push(post);
-            }
-        }
-    }
+	if (file && typeof file === "object" && "metadata" in file && slug) {
+		const metadata = file.metadata as Omit<Post, "slug">;
+		if (metadata.type != "blog") {
+			const post = { ...metadata, slug } satisfies Post;
+			data[post.type].push(post);
+		}
+	}
+}
 </script>
 
 <main
@@ -35,10 +35,7 @@
     class="h-screen w-full flex justify-center items-center flex-col"
     id="projects"
 >
-    <p class="w-[85%] text-left py-5">
-        I want the experience of my personal space to be a raw and unfiltered
-        one. Slightly uncomfortable. Not distracted by vanity or image.
-    </p>
+    <p class="w-[85%] text-left py-5">My space.</p>
     <div
         class="w-3/4 bg-gray-200 h-3/4 flex justify-center items-center flex-col"
     >
@@ -49,7 +46,9 @@
                     <div>To me</div>
                     <div>
                         {#each data.me as p}
-                            <div class="bg-black h-fit p-6 w-fit text-white">
+                            <div
+                                class="bg-black h-fit p-6 w-80 text-white mb-2"
+                            >
                                 <a href={`/port/p/${p.slug}`}>{p.title}</a>
                             </div>
                         {/each}
@@ -59,7 +58,9 @@
                     <div>To you</div>
                     <div>
                         {#each data.you as p}
-                            <div class="bg-black h-fit p-6 w-fit text-white">
+                            <div
+                                class="bg-black h-fit p-6 w-80 text-white mb-2"
+                            >
                                 <a href={`/port/p/${p.slug}`}>{p.title}</a>
                             </div>
                         {/each}

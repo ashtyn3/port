@@ -23,4 +23,4 @@ A pomodoro timing app for Mac OS.
 
 **Privacy**
 
-No information about the user is collected or submitted to a server. Information about timers and usage is not collected.
+No information about the user is collected or submitted to a server.Information about timers and usage is not collected.

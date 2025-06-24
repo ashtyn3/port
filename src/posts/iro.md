@@ -3,7 +3,7 @@ title: Iro
 type: me
 ---
 
-<div class="flex flex-row w-[50%]">
+<div class="flex flex-row w-[50%] gap-2">
     <img src="/iro-game.png"/>
     <img src="/iro-menu.png"/>
 </div>

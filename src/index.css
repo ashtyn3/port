@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+
+/* Load fonts from local assets */
+@font-face {
+  font-family: 'Terminus';
+  src: url('/src/assets/TerminusTTF-4.49.3.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Terminus';
+  src: url('/src/assets/TerminusTTF-Italic-4.49.3.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Terminus';
+  src: url('/src/assets/TerminusTTF-Bold-4.49.3.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Terminus';
+  src: url('/src/assets/TerminusTTF-Bold-Italic-4.49.3.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --color-window: #c0c0c0;
+  --color-window-border: #808080;
+  --color-window-highlight: #ffffff;
+  --color-window-shadow: #000000;
+  --color-button-face: #dfdfdf;
+  --color-button-highlight: #ffffff;
+  --color-button-shadow: #808080;
+  --color-button-text: #000000;
+  --color-selection-bg: #3875d7;
+  --color-selection-fg: #ffffff;
+  --color-menu-bg: #f0f0f0;
+  --color-menu-text: #000000;
+  --color-desktop-bg: #008080;
+  --color-tool-bar-highlight: #D4D0C8;
+  --color-tool-bar-bg: #c0c0c0;
+  --font-sans: 'Terminus', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} */

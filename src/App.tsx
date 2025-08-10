@@ -19,10 +19,7 @@ const App: Component = () => {
 	} = useWindowManager();
 
 	onMount(async () => {
-		createWelcomeWindow(createWindow);
-		if (isMobile()) {
-			toggleMaximize(windows()[0], updateWindow, bringToFront);
-		}
+		createWelcomeWindow(createWindow, { initialMaximized: isMobile() });
 	});
 
 	return (

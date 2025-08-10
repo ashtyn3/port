@@ -1,5 +1,5 @@
 import type { Component } from "solid-js";
-import { createEffect, createSignal, Show } from "solid-js";
+import { createEffect, createMemo, createSignal, Show } from "solid-js";
 import type { WindowData } from "../types";
 import {
 	BOTTOM_BAR_HEIGHT,
@@ -28,6 +28,24 @@ export const Window: Component<WindowProps> = (props) => {
 		height: 0,
 		x: 0,
 		y: 0,
+	});
+
+	// Compute window style based on maximized state
+	const windowStyle = createMemo(() => {
+		if (props.windowData.isMaximized) {
+			return {
+				left: `${window.innerWidth * 0.01}px`,
+				top: `${(window.innerHeight - BOTTOM_BAR_HEIGHT) * 0.01}px`,
+				width: `${window.innerWidth * 0.98}px`,
+				height: `${(window.innerHeight - BOTTOM_BAR_HEIGHT) * 0.98}px`,
+			};
+		}
+		return {
+			left: `${props.windowData.position.x}px`,
+			top: `${props.windowData.position.y}px`,
+			width: `${props.windowData.size.width}px`,
+			height: `${props.windowData.size.height}px`,
+		};
 	});
 
 	const handleMouseDown = (e: MouseEvent) => {
@@ -150,10 +168,7 @@ export const Window: Component<WindowProps> = (props) => {
 			aria-labelledby={`window-title-${props.windowData.id}`}
 			class="absolute bg-window border-window-border border-2 overflow-hidden transition-none will-change-transform focus:outline-none"
 			style={{
-				left: `${props.windowData.position.x}px`,
-				top: `${props.windowData.position.y}px`,
-				width: `${props.windowData.size.width}px`,
-				height: `${props.windowData.size.height}px`,
+				...windowStyle(),
 				"z-index": props.windowData.zIndex,
 				transform: isDragging() ? "translateZ(0)" : "none",
 			}}
@@ -184,7 +199,9 @@ export const Window: Component<WindowProps> = (props) => {
 				/>
 			)}
 			<div class="flex-1 bg-window relative h-[calc(100%)]">
-				<div class="p-2 h-full overflow-auto">{props.windowData.content()}</div>
+				<div class="p-2 pb-8 h-full overflow-auto">
+					{props.windowData.content()}
+				</div>
 			</div>
 			<Show when={props.windowData.resizable ?? true}>
 				<div

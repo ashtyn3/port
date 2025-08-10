@@ -19,9 +19,19 @@ export const toggleMaximize = (
 	onBringToFront: (id: string) => void,
 ) => {
 	if (windowData.isMaximized) {
+		// Fallback to default size/position if lastSize/lastPosition are not set
+		const fallbackSize = windowData.lastSize || {
+			width: window.innerWidth * 0.5,
+			height: window.innerHeight * 0.5,
+		};
+		const fallbackPosition = windowData.lastPosition || {
+			x: (window.innerWidth - fallbackSize.width) / 2,
+			y: (window.innerHeight - fallbackSize.height) / 2,
+		};
+
 		onUpdate(windowData.id, {
-			size: windowData.lastSize,
-			position: windowData.lastPosition,
+			size: fallbackSize,
+			position: fallbackPosition,
 			isMaximized: false,
 		});
 	} else {

@@ -7,6 +7,7 @@ import {
 	onMount,
 	Show,
 } from "solid-js";
+import { createForMeWindow } from "../lib/content/forme";
 import { createFreelanceWindow } from "../lib/content/freelance";
 import { createWelcomeWindow } from "../lib/windows";
 import type { CreateWindow, WindowData } from "../types";
@@ -28,8 +29,10 @@ export const MenuSection = ({
 };
 export const MenuWindow = ({
 	createWindow,
+	bringToFront,
 }: {
 	createWindow: CreateWindow;
+	bringToFront: (window: string) => void;
 }) => {
 	return (
 		<div class="w-full h-full p-0 m-0 bg-white flex flex-col justify-center gap-2">
@@ -48,12 +51,19 @@ export const MenuWindow = ({
 				<GenericButton
 					class="w-full"
 					onClick={() => {
-						createFreelanceWindow(createWindow);
+						createFreelanceWindow(createWindow, bringToFront);
 					}}
 				>
 					Freelance
 				</GenericButton>
-				<GenericButton class="w-full">For myself</GenericButton>
+				<GenericButton
+					class="w-full"
+					onClick={() => {
+						createForMeWindow(createWindow, bringToFront);
+					}}
+				>
+					For myself
+				</GenericButton>
 			</MenuSection>
 		</div>
 	);
@@ -121,7 +131,9 @@ export const Menu = ({
 	onMount(() => {
 		const id = createWindow(
 			"Menu",
-			() => <MenuWindow createWindow={createWindow} />,
+			() => (
+				<MenuWindow createWindow={createWindow} bringToFront={bringToFront} />
+			),
 			{
 				initialSize: { width: 200, height: 300 },
 				initialPosition: { x: 1, y: window.innerHeight - 340 },

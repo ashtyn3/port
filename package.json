@@ -26,8 +26,10 @@
 		"@jitl/quickjs-singlefile-browser-release-sync": "^0.31.0",
 		"@solid-primitives/set": "^0.7.2",
 		"@tailwindcss/vite": "^4.1.11",
+		"debug": "^4.4.1",
 		"quickjs-emscripten": "^0.31.0",
 		"solid-js": "^1.9.5",
+		"solid-markdown": "2.0.1",
 		"solid-primitives": "^0.0.1",
 		"tailwindcss": "^4.1.11"
 	}

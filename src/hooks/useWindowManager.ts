@@ -27,28 +27,36 @@ export const useWindowManager = () => {
 			width: window.innerWidth,
 			height: window.innerHeight,
 		};
+
+		// Calculate initial size and position
+		const initialSize = {
+			width: options?.initialSize?.width || globalWindowSize.width * 0.5,
+			height: options?.initialSize?.height || globalWindowSize.height * 0.5,
+		};
+		const initialPosition = {
+			x:
+				options?.initialPosition?.x ||
+				(globalWindowSize.width - globalWindowSize.width * 0.5) / 2,
+			y:
+				options?.initialPosition?.y ||
+				(globalWindowSize.height - globalWindowSize.height * 0.5) / 2,
+		};
+
 		const newWindow: WindowData = {
 			id: options?.customId ?? Math.random().toString(36),
 			title,
 			zIndex: nextZIndex++,
-			size: {
-				width: options?.initialSize?.width || globalWindowSize.width * 0.5,
-				height: options?.initialSize?.height || globalWindowSize.height * 0.5,
-			},
-			position: {
-				x:
-					options?.initialPosition?.x ||
-					(globalWindowSize.width - globalWindowSize.width * 0.5) / 2,
-				y:
-					options?.initialPosition?.y ||
-					(globalWindowSize.height - globalWindowSize.height * 0.5) / 2,
-			},
+			size: initialSize,
+			position: initialPosition,
 			content,
 			isFocused: false,
 			isHidden: options?.initialHidden ?? false,
-			isMaximized: false,
 			titleBar: options?.titleBar ?? true,
 			resizable: options?.resizable ?? true,
+			isMaximized: options?.initialMaximized ?? false,
+			// Store the initial size and position for unmaximizing
+			lastSize: options?.initialMaximized ? initialSize : undefined,
+			lastPosition: options?.initialMaximized ? initialPosition : undefined,
 		};
 		const existing = windows().find((w) => w.id === newWindow.id);
 		if (existing) {

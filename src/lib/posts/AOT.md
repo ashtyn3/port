@@ -1,6 +1,6 @@
 # Ashtyn's Own Timer
 
-![Ashtyn's Own Timer](/src/assets/AOT/sm-shot.png)
+![Ashtyn's Own Timer](/assets/AOT/sm-shot.png)
 
 A pomodoro timing app for Mac OS.
 

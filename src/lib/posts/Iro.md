@@ -1,6 +1,6 @@
 # Iro
 
-![Iro Game](/src/assets/Iro/game.png)
+![Iro Game](/assets/Iro/game.png)
 
 A rogue like manufacturing and factory game.
 

@@ -177,18 +177,21 @@ export const Window: Component<WindowProps> = (props) => {
 		}
 	});
 
-	return (
+		return (
 		<div
 			role="dialog"
 			aria-labelledby={`window-title-${props.windowData.id}`}
-			class="absolute bg-window border-window-border border-2 overflow-hidden focus:outline-none"
+			class="absolute bg-window overflow-hidden focus:outline-none"
 			classList={{
 				"will-change-transform": isDragging() || isResizing(),
+				"border-t-2 border-l-2 border-window-border": props.windowData.isFocused,
+				"border-2 border-window-border": !props.windowData.isFocused,
 			}}
 			style={{
 				...staticStyle(),
 				...dynamicStyle(),
 				transform: isDragging() || isResizing() ? "translateZ(0)" : "none",
+				"box-shadow": props.windowData.isFocused ? "3px 3px 0px 0px #000" : "none",
 			}}
 			onMouseDown={(e) => {
 				const target = e.target as HTMLElement | null;

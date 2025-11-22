@@ -26,7 +26,7 @@ const AppContent: Component = () => {
 
 	return (
 		<div>
-			<div class="w-full h-[100dvh] overflow-hidden bg-red-100">
+			<div class="w-full h-[100dvh] overflow-hidden" style="background-color: #ff8080; background-image: linear-gradient(45deg, #000 25%, transparent 25%), linear-gradient(-45deg, #000 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #000 75%), linear-gradient(-45deg, transparent 75%, #000 75%); background-size: 4px 4px; background-position: 0 0, 0 2px, 2px -2px, -2px 0px;">
 				<For each={windows()}>
 					{(windowData) => {
 						if (windowData.isHidden) return null;

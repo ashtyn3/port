@@ -1,8 +1,7 @@
 import { createResource } from "solid-js";
 import { StyledMarkdown } from "../../components/Markdown";
 import { GenericButton } from "../../components/menu";
-import type { CreateWindow } from "../../types";
-import { isMobile } from "../../utils/constants";
+import { useWindowManager } from "../../hooks/useWindowManager";
 import { getPost } from "../posts/post";
 
 export const AshtynsOwnTimer = () => {
@@ -29,7 +28,8 @@ export const Iro = () => {
 	);
 };
 
-export const ForMe = ({ createWindow }: { createWindow: CreateWindow }) => {
+export const ForMe = () => {
+	const { createWindow } = useWindowManager();
 	return (
 		<div class="flex flex-col items-center justify-center h-full w-full pb-8">
 			<div class="flex flex-col items-center justify-center ">
@@ -57,17 +57,4 @@ export const ForMe = ({ createWindow }: { createWindow: CreateWindow }) => {
 	);
 };
 
-export const createForMeWindow = (
-	createWindow: CreateWindow,
-	bringToFront: (window: string) => void,
-) => {
-	const id = createWindow(
-		"For me",
-		() => <ForMe createWindow={createWindow} />,
-		{
-			customId: "for-me",
-			initialMaximized: isMobile(),
-		},
-	);
-	bringToFront(id);
-};
+// No longer needed - window creation is now handled directly in Menu component

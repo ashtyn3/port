@@ -1,5 +1,6 @@
 import type { Component } from "solid-js";
 import { createEffect, createMemo, createSignal, Show } from "solid-js";
+import { useWindowManager } from "../hooks/useWindowManager";
 import type { WindowData } from "../types";
 import {
 	BOTTOM_BAR_HEIGHT,
@@ -10,13 +11,10 @@ import { TitleBar } from "./TitleBar";
 
 interface WindowProps {
 	windowData: WindowData;
-	onUpdate: (id: string, updates: Partial<WindowData>) => void;
-	onRemove: (id: string) => void;
-	onBringToFront: (id: string) => void;
-	toggleHidden: (id: string) => void;
 }
 
 export const Window: Component<WindowProps> = (props) => {
+	const { updateWindow, removeWindow, bringToFront } = useWindowManager();
 	const [isDragging, setIsDragging] = createSignal(false);
 	const [dragOffset, setDragOffset] = createSignal({ x: 0, y: 0 });
 	const [isResizing, setIsResizing] = createSignal(false);
@@ -30,8 +28,17 @@ export const Window: Component<WindowProps> = (props) => {
 		y: 0,
 	});
 
-	// Compute window style based on maximized state
-	const windowStyle = createMemo(() => {
+
+
+	// Static styles that don't change during drag
+	const staticStyle = createMemo(() => ({
+		"z-index": props.windowData.zIndex,
+		transition: "none",
+		contain: "layout style paint",
+	}));
+
+	// Dynamic position/size styles that change during drag
+	const dynamicStyle = createMemo(() => {
 		if (props.windowData.isMaximized) {
 			return {
 				left: `${window.innerWidth * 0.01}px`,
@@ -48,6 +55,14 @@ export const Window: Component<WindowProps> = (props) => {
 		};
 	});
 
+
+
+	// Memoize content based only on window ID to prevent re-rendering during drag
+	const stableContent = createMemo(() => {
+		// This will only change when the window ID changes, not during position updates
+		return props.windowData.content();
+	});
+
 	const handleMouseDown = (e: MouseEvent) => {
 		if (props.windowData.isMaximized) {
 			return;
@@ -58,7 +73,7 @@ export const Window: Component<WindowProps> = (props) => {
 			y: e.clientY - props.windowData.position.y,
 		});
 		setIsDragging(true);
-		props.onBringToFront(props.windowData.id);
+		bringToFront(props.windowData.id);
 		document.body.style.cursor = "grabbing";
 	};
 
@@ -69,7 +84,7 @@ export const Window: Component<WindowProps> = (props) => {
 		e.preventDefault();
 		e.stopPropagation();
 		setIsResizing(true);
-		props.onBringToFront(props.windowData.id);
+		bringToFront(props.windowData.id);
 
 		setResizeDirection(direction);
 		document.body.style.cursor = "nw-resize";
@@ -98,7 +113,7 @@ export const Window: Component<WindowProps> = (props) => {
 					window.innerHeight - props.windowData.size.height - BOTTOM_BAR_HEIGHT,
 				),
 			);
-			props.onUpdate(props.windowData.id, {
+			updateWindow(props.windowData.id, {
 				position: { x: constrainedX, y: constrainedY },
 			});
 		}
@@ -136,7 +151,7 @@ export const Window: Component<WindowProps> = (props) => {
 			const maxWidth = window.innerWidth - newX;
 			const maxHeight = window.innerHeight - newY - BOTTOM_BAR_HEIGHT;
 
-			props.onUpdate(props.windowData.id, {
+			updateWindow(props.windowData.id, {
 				size: {
 					width: Math.min(newWidth, maxWidth),
 					height: Math.min(newHeight, maxHeight),
@@ -166,11 +181,14 @@ export const Window: Component<WindowProps> = (props) => {
 		<div
 			role="dialog"
 			aria-labelledby={`window-title-${props.windowData.id}`}
-			class="absolute bg-window border-window-border border-2 overflow-hidden transition-none will-change-transform focus:outline-none"
+			class="absolute bg-window border-window-border border-2 overflow-hidden focus:outline-none"
+			classList={{
+				"will-change-transform": isDragging() || isResizing(),
+			}}
 			style={{
-				...windowStyle(),
-				"z-index": props.windowData.zIndex,
-				transform: isDragging() ? "translateZ(0)" : "none",
+				...staticStyle(),
+				...dynamicStyle(),
+				transform: isDragging() || isResizing() ? "translateZ(0)" : "none",
 			}}
 			onMouseDown={(e) => {
 				const target = e.target as HTMLElement | null;
@@ -180,27 +198,29 @@ export const Window: Component<WindowProps> = (props) => {
 				) {
 					return;
 				}
-				props.onBringToFront(props.windowData.id);
+				bringToFront(props.windowData.id);
 			}}
 			onKeyDown={(e) => {
 				if (e.key === "Escape") {
-					props.onRemove(props.windowData.id);
+					removeWindow(props.windowData.id);
 				}
 			}}
 		>
 			{props.windowData.titleBar && (
-				<TitleBar
-					windowData={props.windowData}
-					onMouseDown={handleMouseDown}
-					onClose={props.onRemove}
-					onUpdate={props.onUpdate}
-					onBringToFront={props.onBringToFront}
-					toggleHidden={props.toggleHidden}
-				/>
+				<TitleBar windowData={props.windowData} onMouseDown={handleMouseDown} />
 			)}
 			<div class="flex-1 bg-window relative h-[calc(100%)]">
-				<div class="p-2 pb-8 h-full overflow-auto">
-					{props.windowData.content()}
+				<div
+					class="p-2 pb-8 h-full overflow-auto"
+					classList={{
+						"content-optimizing": isDragging() || isResizing(),
+					}}
+					style={{
+						"pointer-events": isDragging() || isResizing() ? "none" : "auto",
+						"contain": isDragging() || isResizing() ? "layout style paint" : "none",
+					}}
+				>
+					{stableContent()}
 				</div>
 			</div>
 			<Show when={props.windowData.resizable ?? true}>

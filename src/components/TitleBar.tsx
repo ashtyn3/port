@@ -1,64 +1,16 @@
 import type { Component } from "solid-js";
 import { createMemo } from "solid-js";
+import { useWindowManager } from "../hooks/useWindowManager";
 import type { WindowData } from "../types";
-import { BOTTOM_BAR_HEIGHT } from "../utils/constants";
 import { TitleBarButton } from "./TitleBarButton";
 
 interface TitleBarProps {
 	windowData: WindowData;
 	onMouseDown: (e: MouseEvent) => void;
-	onClose: (id: string) => void;
-	onUpdate: (id: string, updates: Partial<WindowData>) => void;
-	onBringToFront: (id: string) => void;
-	toggleHidden: (id: string) => void;
 }
 
-export const toggleMaximize = (
-	windowData: WindowData,
-	onUpdate: (id: string, updates: Partial<WindowData>) => void,
-	onBringToFront: (id: string) => void,
-) => {
-	if (windowData.isMaximized) {
-		// Fallback to default size/position if lastSize/lastPosition are not set
-		const fallbackSize = windowData.lastSize || {
-			width: window.innerWidth * 0.5,
-			height: window.innerHeight * 0.5,
-		};
-		const fallbackPosition = windowData.lastPosition || {
-			x: (window.innerWidth - fallbackSize.width) / 2,
-			y: (window.innerHeight - fallbackSize.height) / 2,
-		};
-
-		onUpdate(windowData.id, {
-			size: fallbackSize,
-			position: fallbackPosition,
-			isMaximized: false,
-		});
-	} else {
-		const globalWindowSize = {
-			width: window.innerWidth,
-			height: window.innerHeight - BOTTOM_BAR_HEIGHT,
-		};
-		const lastSize = windowData.size;
-		const lastPosition = windowData.position;
-		onBringToFront(windowData.id);
-		onUpdate(windowData.id, {
-			size: {
-				width: globalWindowSize.width * 0.98,
-				height: globalWindowSize.height * 0.98,
-			},
-			lastSize,
-			lastPosition,
-			position: {
-				x: globalWindowSize.width * 0.01,
-				y: globalWindowSize.height * 0.01,
-			},
-			isMaximized: true,
-		});
-	}
-};
-
 export const TitleBar: Component<TitleBarProps> = (props: TitleBarProps) => {
+	const { removeWindow, toggleHidden, toggleMaximize } = useWindowManager();
 	const bg = createMemo(() => {
 		return props.windowData.isFocused
 			? "bg-gradient-to-b from-[#3875d7] to-[#274b8a]"
@@ -74,7 +26,7 @@ export const TitleBar: Component<TitleBarProps> = (props: TitleBarProps) => {
 					aria-label={`Close ${props.windowData.title}`}
 					onClick={(e) => {
 						e.stopPropagation();
-						props.onClose(props.windowData.id);
+						removeWindow(props.windowData.id);
 					}}
 				>
 					X
@@ -83,7 +35,7 @@ export const TitleBar: Component<TitleBarProps> = (props: TitleBarProps) => {
 					aria-label={`Minimize ${props.windowData.title}`}
 					onClick={(e) => {
 						e.stopPropagation();
-						props.toggleHidden(props.windowData.id);
+						toggleHidden(props.windowData.id);
 					}}
 				>
 					—
@@ -92,11 +44,7 @@ export const TitleBar: Component<TitleBarProps> = (props: TitleBarProps) => {
 					aria-label={`Maximize ${props.windowData.title}`}
 					onClick={(e) => {
 						e.stopPropagation();
-						toggleMaximize(
-							props.windowData,
-							props.onUpdate,
-							props.onBringToFront,
-						);
+						toggleMaximize(props.windowData.id);
 					}}
 				>
 					□

@@ -23,10 +23,7 @@ export type CreateWindowOptions = {
 	initialHidden?: boolean;
 	resizable?: boolean;
 	customId?: string;
+	initialMaximized?: boolean;
 };
 
-export type CreateWindow = (
-	title: string,
-	content: () => JSX.Element,
-	options?: CreateWindowOptions,
-) => string;
+// Removed CreateWindow type - use useWindowManager hook instead

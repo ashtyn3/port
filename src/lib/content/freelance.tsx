@@ -1,7 +1,7 @@
 import { createResource } from "solid-js";
 import { StyledMarkdown } from "../../components/Markdown";
 import { GenericButton } from "../../components/menu";
-import type { CreateWindow } from "../../types";
+import { useWindowManager } from "../../hooks/useWindowManager";
 import { isMobile } from "../../utils/constants";
 import { getPost } from "../posts/post";
 
@@ -29,7 +29,8 @@ export const Scrubbadub = () => {
 	);
 };
 
-export const Freelance = ({ createWindow }: { createWindow: CreateWindow }) => {
+export const Freelance = () => {
+	const { createWindow } = useWindowManager();
 	return (
 		<div class="flex flex-col items-center justify-center h-full w-full pb-8">
 			<div class="flex flex-col items-center justify-center ">
@@ -57,29 +58,4 @@ export const Freelance = ({ createWindow }: { createWindow: CreateWindow }) => {
 	);
 };
 
-export const createFreelanceWindow = (
-	createWindow: CreateWindow,
-	bringToFront: (window: string) => void,
-) => {
-	const id = createWindow(
-		"Freelance",
-		() => <Freelance createWindow={createWindow} />,
-		{
-			customId: "freelance",
-			initialMaximized: isMobile(),
-		},
-	);
-	// Open related windows after Freelance is created to avoid recursive mount issues
-	queueMicrotask(() => {
-		createWindow("Wayfinder Advisor", () => <WayfinderAdvisor />, {
-			customId: "wayfinder-advisor",
-			initialMaximized: isMobile(),
-		});
-		createWindow("Scrubbadub", () => <Scrubbadub />, {
-			customId: "scrubbadub",
-			initialMaximized: isMobile(),
-		});
-		bringToFront(id);
-	});
-	return id;
-};
+// No longer needed - window creation is now handled directly in Menu component

@@ -151,3 +151,67 @@ code {
 .markdown-minimal p, .markdown-minimal li {
   @apply mb-2;
 }
+
+/* Image optimization during drag operations */
+.markdown-content img {
+  @apply transition-none;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  will-change: auto;
+  /* Prevent layout shifts */
+  max-width: 100%;
+  height: auto;
+}
+
+/* Global image optimizations */
+img {
+  /* Prevent flickering during interactions */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+/* Optimize images during window drag/resize */
+.will-change-transform .markdown-content img,
+.will-change-transform img {
+  image-rendering: pixelated;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+}
+
+/* Prevent image transitions during interactions */
+.will-change-transform * {
+  transition: none !important;
+}
+
+/* Additional image optimizations for smooth dragging */
+.will-change-transform img {
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  content-visibility: auto;
+}
+
+/* Content optimization during drag */
+.content-optimizing {
+  contain: layout style paint;
+}
+
+.content-optimizing * {
+  transition: none !important;
+  animation: none !important;
+}
+
+.content-optimizing img {
+  image-rendering: pixelated;
+  will-change: auto;
+  /* Prevent image reflow during drag */
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}

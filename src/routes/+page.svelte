@@ -36,7 +36,7 @@
 		<h2 id="interests-title">Research interests</h2>
 		<ul class="research-interests">
 			<li>Natural-language syntax and semantics.</li>
-			<li>What formal models reveal—and erase—when applied to human language.</li>
+			<li>Clearer ways to describe and notate formal systems.</li>
 			<li>The connections among linguistic theory, logic, type theory, and programming languages.</li>
 		</ul>
 	</section>

@@ -36,7 +36,7 @@
 		<h2 id="interests-title">Research interests</h2>
 		<ul class="research-interests">
 			<li>Natural-language syntax and semantics.</li>
-			<li>Descriptive and notational frameworks for formal systems.</li>
+			<li>Methods for specifying formal systems.</li>
 			<li>The connections among linguistic theory, logic, type theory, and programming languages.</li>
 		</ul>
 	</section>

@@ -1,5 +1,11 @@
 import type { EntryGenerator } from "./$types";
 
+type Post = {
+	title: string;
+	type: string;
+	date?: string;
+};
+
 export const entries: EntryGenerator = () => {
     const paths = import.meta.glob("../../../posts/*.md", { eager: true });
     const slugs = [];

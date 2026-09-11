@@ -10,10 +10,8 @@
 	<header class="intro" aria-labelledby="page-title">
 		<h1 id="page-title">Ashtyn Morel-Blake</h1>
 		<p class="lede">
-			I study linguistics at McGill University, where I minor in philosophy. I am most
-			interested in the intersection of formal systems and natural language: how explicit
-			structures can represent, explain, or fail to capture the way people make meaning. I
-			explore adjacent questions through programming, writing, and building models from below.
+			I study linguistics at McGill University and minor in philosophy. I am interested in
+			how formal systems represent—or fail to represent—natural language and meaning.
 		</p>
 		<nav aria-label="Primary">
 			<ul class="annotated-links">
@@ -34,7 +32,7 @@
 	</header>
 
 	<section aria-labelledby="interests-title">
-		<h2 id="interests-title">Interests</h2>
+		<h2 id="interests-title">Research interests</h2>
 		<ul class="research-interests">
 			<li>Natural language and formal representations of its structure and meaning.</li>
 			<li>What formal models reveal—and erase—when applied to human language.</li>
@@ -43,7 +41,7 @@
 	</section>
 
 	<section id="writing" aria-labelledby="writing-title">
-		<h2 id="writing-title">Writing</h2>
+		<h2 id="writing-title">Research &amp; writing</h2>
 		<p>
 			I write about language, logic, computation, theology, material life, and questions
 			that refuse to leave me alone.

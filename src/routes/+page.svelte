@@ -35,7 +35,7 @@
 	<section aria-labelledby="interests-title">
 		<h2 id="interests-title">Research interests</h2>
 		<ul class="research-interests">
-			<li>Natural language and formal representations of its structure and meaning.</li>
+			<li>Formal approaches to syntax and semantics.</li>
 			<li>What formal models reveal—and erase—when applied to human language.</li>
 			<li>The connections among linguistic theory, logic, type theory, and programming languages.</li>
 		</ul>

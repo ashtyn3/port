@@ -2,7 +2,7 @@
 	<title>Ashtyn Morel-Blake</title>
 	<meta
 		name="description"
-		content="Ashtyn Morel-Blake studies linguistics and philosophy at McGill University, with a particular interest in the intersection of formal systems and natural language."
+		content="Ashtyn Morel-Blake studies linguistics and philosophy at McGill University, with interests in formal systems, natural language, and speech-language pathology."
 	/>
 </svelte:head>
 
@@ -11,7 +11,8 @@
 		<h1 id="page-title">Ashtyn Morel-Blake</h1>
 		<p class="lede">
 			I study linguistics at McGill University and minor in philosophy. I am interested in
-			how formal systems represent—or fail to represent—natural language and meaning.
+			where formal systems meet natural language, and I ultimately hope to work as a
+			speech-language pathologist.
 		</p>
 		<nav aria-label="Primary">
 			<ul class="annotated-links">

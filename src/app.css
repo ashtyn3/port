@@ -94,10 +94,7 @@ li {
 }
 
 nav {
-	display: flex;
-	gap: 1.2rem;
-	font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-	font-size: 0.9rem;
+	max-width: 36rem;
 }
 
 section {
@@ -114,24 +111,6 @@ section {
 	margin-bottom: 0.4rem;
 }
 
-.work-list {
-	border-top: 1px solid #bdbdb4;
-}
-
-.work-item {
-	padding: 1.45rem 0 1.6rem;
-	border-bottom: 1px solid #bdbdb4;
-}
-
-	.work-heading {
-	display: flex;
-	align-items: baseline;
-	justify-content: space-between;
-	gap: 1rem;
-	margin-bottom: 0.55rem;
-}
-
-.work-heading span,
 .link-list > li > span:last-child {
 	flex: none;
 	font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
@@ -144,7 +123,7 @@ section {
 }
 
 .link-list,
-.archive-list {
+.annotated-links {
 	margin: 1.25rem 0 0;
 	padding: 0;
 	list-style: none;
@@ -158,14 +137,15 @@ section {
 	border-top: 1px dotted #bdbdb4;
 }
 
-.archive-list li {
+.annotated-links li {
 	display: grid;
 	grid-template-columns: minmax(10rem, 0.85fr) 1.6fr;
 	gap: 1rem;
 	padding: 0.55rem 0;
+	border-top: 1px dotted #bdbdb4;
 }
 
-.archive-list span {
+.annotated-links span {
 	color: #4c4c47;
 }
 
@@ -200,7 +180,7 @@ footer p {
 		margin-bottom: 3.25rem;
 	}
 
-	.archive-list li {
+	.annotated-links li {
 		grid-template-columns: 1fr;
 		gap: 0.05rem;
 		margin-bottom: 0.65rem;

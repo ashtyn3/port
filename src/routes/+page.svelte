@@ -23,7 +23,7 @@
 				</li>
 				<li>
 					<a href="https://github.com/ashtyn3">GitHub</a>
-					<span>Older software projects and experiments.</span>
+					<span>Software projects and experiments.</span>
 				</li>
 				<li>
 					<a href="mailto:ashtynmorel@gmail.com">Email</a>

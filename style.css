@@ -1,0 +1,21 @@
+body {
+	max-width: 42rem;
+	margin: 2rem auto;
+	padding: 0 1rem;
+	font-family: Georgia, "Times New Roman", serif;
+	line-height: 1.5;
+	color: #181818;
+	background: #fbfbf8;
+}
+
+h1 {
+	font-weight: 500;
+}
+
+a {
+	color: #163ea7;
+}
+
+li {
+	margin-bottom: 0.3rem;
+}

@@ -65,7 +65,7 @@
 	<title>Ashtyn Morel-Blake</title>
 	<meta
 		name="description"
-		content="Ashtyn Morel-Blake studies linguistics and philosophy at McGill University and builds systems to understand difficult ideas."
+		content="Ashtyn Morel-Blake studies linguistics and philosophy at McGill University, with a particular interest in the intersection of formal systems and natural language."
 	/>
 </svelte:head>
 
@@ -73,10 +73,10 @@
 	<header class="intro" aria-labelledby="page-title">
 		<h1 id="page-title">Ashtyn Morel-Blake</h1>
 		<p class="lede">
-			I study linguistics at McGill University, where I minor in philosophy. I am also a
-			programmer and writer interested in systems, programming languages, simulation,
-			logic, and theology. Across all of them, I tend to understand things by building
-			models from below.
+			I study linguistics at McGill University, where I minor in philosophy. I am most
+			interested in the intersection of formal systems and natural language: how explicit
+			structures can represent, explain, or fail to capture the way people make meaning. I
+			explore adjacent questions through programming, writing, and building models from below.
 		</p>
 		<nav aria-label="Primary">
 			<a href="https://github.com/ashtyn3">GitHub</a>
@@ -88,7 +88,7 @@
 	<section aria-labelledby="amusements-title">
 		<h2 id="amusements-title">Recurring amusements</h2>
 		<ol class="amusements">
-			<li>Language, meaning, and the structures that hold them together.</li>
+			<li>The meeting point between formal systems and natural language.</li>
 			<li>Storage systems, and what durability actually requires.</li>
 			<li>Simulated worlds made from materials, entities, and environmental rules.</li>
 			<li>Type theory, freedom, and what it means for a system to compute.</li>
@@ -113,8 +113,8 @@
 	<section id="writing" aria-labelledby="writing-title">
 		<h2 id="writing-title">Writing</h2>
 		<p>
-			I write about logic, computation, theology, material life, and questions that refuse
-			to leave me alone.
+			I write about language, logic, computation, theology, material life, and questions
+			that refuse to leave me alone.
 		</p>
 		<ul class="link-list">
 			<li>

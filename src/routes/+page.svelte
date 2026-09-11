@@ -57,10 +57,6 @@
 				<span><strong>Type Theory</strong> — from Russell's paradox through Church to Curry–Howard.</span>
 				<span>2026</span>
 			</li>
-			<li>
-				<a href="/p/a_material_exploration">An exploration of material</a>
-				<span>2025</span>
-			</li>
 		</ul>
 	</section>
 

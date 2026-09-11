@@ -35,11 +35,11 @@
 
 	<section aria-labelledby="interests-title">
 		<h2 id="interests-title">Research interests</h2>
-		<ol class="amusements">
+		<ul class="research-interests">
 			<li>Natural language and formal representations of its structure and meaning.</li>
 			<li>What formal models reveal—and erase—when applied to human language.</li>
 			<li>The connections among linguistic theory, logic, type theory, and programming languages.</li>
-		</ol>
+		</ul>
 	</section>
 
 	<section id="writing" aria-labelledby="writing-title">

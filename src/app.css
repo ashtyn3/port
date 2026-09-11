@@ -101,14 +101,19 @@ section {
 	margin-bottom: 4rem;
 }
 
-.amusements {
+.research-interests {
 	margin: 0;
 	padding-left: 1.5rem;
+	list-style: disc outside;
 }
 
-.amusements li {
+.research-interests li {
 	padding-left: 0.35rem;
-	margin-bottom: 0.4rem;
+	margin-bottom: 0.65rem;
+}
+
+.research-interests li::marker {
+	color: #686860;
 }
 
 .link-list > li > span:last-child {

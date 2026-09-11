@@ -79,39 +79,23 @@
 			explore adjacent questions through programming, writing, and building models from below.
 		</p>
 		<nav aria-label="Primary">
+			<a href="#writing">Research &amp; writing</a>
 			<a href="https://github.com/ashtyn3">GitHub</a>
-			<a href="#writing">Writing</a>
 			<a href="mailto:ashtynmorel@gmail.com">Email</a>
 		</nav>
 	</header>
 
-	<section aria-labelledby="amusements-title">
-		<h2 id="amusements-title">Recurring amusements</h2>
+	<section aria-labelledby="interests-title">
+		<h2 id="interests-title">Research interests</h2>
 		<ol class="amusements">
-			<li>The meeting point between formal systems and natural language.</li>
-			<li>Storage systems, and what durability actually requires.</li>
-			<li>Simulated worlds made from materials, entities, and environmental rules.</li>
-			<li>Type theory, freedom, and what it means for a system to compute.</li>
+			<li>Natural language and formal representations of its structure and meaning.</li>
+			<li>What formal models reveal—and erase—when applied to human language.</li>
+			<li>The connections among linguistic theory, logic, type theory, and programming languages.</li>
 		</ol>
 	</section>
 
-	<section aria-labelledby="work-title">
-		<h2 id="work-title">Selected work</h2>
-		<div class="work-list">
-			{#each selectedWork as project}
-				<article class="work-item">
-					<div class="work-heading">
-						<h3><a href={project.href}>{project.title}</a></h3>
-						<span>{project.year}</span>
-					</div>
-					<p>{project.description}</p>
-				</article>
-			{/each}
-		</div>
-	</section>
-
 	<section id="writing" aria-labelledby="writing-title">
-		<h2 id="writing-title">Writing</h2>
+		<h2 id="writing-title">Research &amp; writing</h2>
 		<p>
 			I write about language, logic, computation, theology, material life, and questions
 			that refuse to leave me alone.
@@ -132,8 +116,27 @@
 		</ul>
 	</section>
 
+	<section aria-labelledby="work-title">
+		<h2 id="work-title">Earlier software work</h2>
+		<p>
+			Before turning more fully toward academic research, I spent a great deal of time
+			learning by constructing systems from first principles.
+		</p>
+		<div class="work-list">
+			{#each selectedWork as project}
+				<article class="work-item">
+					<div class="work-heading">
+						<h3><a href={project.href}>{project.title}</a></h3>
+						<span>{project.year}</span>
+					</div>
+					<p>{project.description}</p>
+				</article>
+			{/each}
+		</div>
+	</section>
+
 	<section aria-labelledby="archive-title">
-		<h2 id="archive-title">Other holes I have fallen into</h2>
+		<h2 id="archive-title">Software archive</h2>
 		<ul class="archive-list">
 			{#each smallerHoles as project}
 				<li>

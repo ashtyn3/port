@@ -154,19 +154,6 @@ section {
 	color: #4c4c47;
 }
 
-footer {
-	padding-top: 1.5rem;
-	border-top: 1px solid #181818;
-}
-
-footer p {
-	max-width: 34rem;
-	margin-bottom: 0;
-	font-size: 0.9rem;
-	font-style: italic;
-	color: #5c5c55;
-}
-
 @media (max-width: 600px) {
 	body {
 		background: #fbfbf8;

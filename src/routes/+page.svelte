@@ -60,7 +60,4 @@
 		</ul>
 	</section>
 
-	<footer>
-		<p>Last updated as my interests continue to sharpen.</p>
-	</footer>
 </main>

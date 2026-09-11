@@ -18,8 +18,8 @@
 		<nav aria-label="Primary">
 			<ul class="annotated-links">
 				<li>
-					<a href="#writing">Research &amp; writing</a>
-					<span>Papers, essays, and works in progress.</span>
+					<a href="https://blog.ashtyn.land">Blog</a>
+					<span>Essays, notes, and works in progress.</span>
 				</li>
 				<li>
 					<a href="https://github.com/ashtyn3">GitHub</a>
